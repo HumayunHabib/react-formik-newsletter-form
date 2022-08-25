@@ -6,9 +6,9 @@ import "./styles.css";
 const SimpleForm = () => {
   const formik = useFormik({
     initialValues: { email: "" },
-    onSubmit: values => {
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-    }
+    },
   });
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -25,4 +25,4 @@ const SimpleForm = () => {
   );
 };
 
-export default SimpleForm
+export default SimpleForm;
