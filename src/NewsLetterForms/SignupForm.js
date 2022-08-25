@@ -1,10 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
-import "../styles.css";
-// A custom validation function. This must return an object
-// which keys are symmetrical to our values/initialValues
+
 const validate = (values) => {
   const errors = {};
+
   if (!values.firstName) {
     errors.firstName = "Required";
   } else if (values.firstName.length > 15) {
@@ -27,9 +26,6 @@ const validate = (values) => {
 };
 
 const SignupForm = () => {
-  // Pass the useFormik() hook initial form values, a validate function that will be called when
-  // form values change or fields are blurred, and a submit function that will
-  // be called when the form is submitted
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -49,6 +45,7 @@ const SignupForm = () => {
         name="firstName"
         type="text"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values.firstName}
       />
       {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
@@ -59,6 +56,7 @@ const SignupForm = () => {
         name="lastName"
         type="text"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values.lastName}
       />
       {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
@@ -69,6 +67,7 @@ const SignupForm = () => {
         name="email"
         type="email"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values.email}
       />
       {formik.errors.email ? <div>{formik.errors.email}</div> : null}
